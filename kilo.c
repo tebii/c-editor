@@ -9,6 +9,8 @@
 
 /*** data ***/
 
+#define CTRL_KEY(k) ((k) & 0x1f)
+
 struct termios orig_termios;
 
 /*** terminal ***/
@@ -53,9 +55,8 @@ int main() {
     } else {
       printf("%d ('%c')\r\n", c, c);
     }
-    if (c == 'q')
+    if (c == CTRL_KEY('q'))
       break;
   }
-
   return EXIT_SUCCESS;
 }
